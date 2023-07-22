@@ -34,6 +34,24 @@ def neural_paper():
         llm = Falcon(api_token=st.secrets['HUGGINGFACE_API_KEY'])
         chain = PandasAI(llm)
         st.write(chain.run(data,question))
+
+def custom_bot(data):
+    st.title('Now you can chat with your data happily')
+    question = st.text_input('You can ask question regarding your dataset 🔥')
+    if question:
+        llm = Falcon(api_token=st.secrets['HUGGINGFACE_API_KEY'])
+        chain = PandasAI(llm)
+        st.write(chain.run(data,question))
+    
+def main():
+    st.sidebar.title('You can upload your data and chat with your data as well :smile:')
+    uploaded_data = st.file_uploader("Upload your own dataset",type='csv')
+    if uploaded_data is not None:
+        custom_bot(uploaded_data)
+    else:
+        neural_paper()
+
+main()
     
 
 
