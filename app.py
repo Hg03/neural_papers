@@ -45,7 +45,7 @@ def custom_bot(data):
     
 def main():
     st.sidebar.title('You can upload your data and chat with your data as well :smile:')
-    uploaded_data = st.file_uploader("Upload your own dataset",type='csv')
+    uploaded_data = st.sidebar.file_uploader("Upload your own dataset",type='csv')
     if uploaded_data is not None:
         custom_bot(uploaded_data)
     else:
